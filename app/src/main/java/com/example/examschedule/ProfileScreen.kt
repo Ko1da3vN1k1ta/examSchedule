@@ -7,13 +7,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.examschedule.data.ExamViewModel
 
 @Composable
-fun ProfileScreen(navController: NavController) {
+fun ProfileScreen(navController: NavController, viewModel: ExamViewModel) {
+    val user by viewModel.currentUser.observeAsState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -21,16 +26,19 @@ fun ProfileScreen(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Кошкин Виталий Андреевич")
-        Text(text = "Преподаватель")
+        user?.let {
+            Text(text = "Полное имя: ${it.fullName}")
+            Text(text = "Позиция: ${it.position}")
+        }
         Button(onClick = {
             navController.navigate("screen_1") {
                 popUpTo(navController.graph.startDestinationId) {
                     inclusive = true
                 }
             }
+            viewModel.setCurrentUser(null)
         }) {
-            Text("Logout")
+            Text("Выход")
         }
     }
 }

@@ -17,9 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.examschedule.data.ExamViewModel
+import com.example.examschedule.data.User
 
 @Composable
-fun AuthScreen(navController: NavController) {
+fun AuthScreen(navController: NavController, viewModel: ExamViewModel) {
     var userId by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -43,10 +45,16 @@ fun AuthScreen(navController: NavController) {
         )
         Button(onClick = {
             if (userId.isNotEmpty() && password.isNotEmpty()) {
-                navController.navigate("screen_3")
+                val user = User(
+                    userId = userId,
+                    fullName = "Колдаев Никита",
+                    position = "Студентик"
+                )
+                viewModel.setCurrentUser(user)
+                navController.navigate("screen_2")
             }
         }) {
-            Text("Login")
+            Text("Логин")
         }
     }
 }

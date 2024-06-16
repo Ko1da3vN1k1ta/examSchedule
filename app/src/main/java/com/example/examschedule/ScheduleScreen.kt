@@ -27,15 +27,15 @@ fun ScheduleScreen(viewModel: ExamViewModel) {
                     .fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(text = "Subject: ${exam.subject}")
-                    Text(text = "Date: ${exam.date}")
-                    Text(text = "Start Time: ${exam.startTime}")
-                    Text(text = "Duration: ${exam.duration} minutes")
-                    Text(text = "Examiner: ${exam.examiner}")
+                    Text(text = "Предмет: ${exam.subject}")
+                    Text(text = "Дата: ${exam.date}")
+                    Text(text = "Начало проведения: ${exam.startTime}")
+                    Text(text = "Проведение: ${exam.duration} минут")
+                    Text(text = "Экзаменатор: ${exam.examiner}")
                     Button(onClick = {
                         viewModel.deleteExam(exam)
                     }) {
-                        Text("Delete Exam")
+                        Text("Удалить экзамен")
                     }
                 }
             }

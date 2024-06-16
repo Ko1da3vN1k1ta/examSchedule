@@ -14,7 +14,7 @@ import com.example.examschedule.data.ExamViewModel
 fun NavGraph(navHostController: NavHostController, examViewModel: ExamViewModel) {
     NavHost(navController = navHostController, startDestination = "screen_1") {
         composable("screen_1") {
-            AuthScreen(navController = navHostController)
+            AuthScreen(navController = navHostController, viewModel = examViewModel)
         }
         composable("screen_2") {
             ScheduleScreen(viewModel = examViewModel)
@@ -23,7 +23,7 @@ fun NavGraph(navHostController: NavHostController, examViewModel: ExamViewModel)
             AddExamScreen(viewModel = examViewModel)
         }
         composable("screen_4") {
-            ProfileScreen(navController = navHostController)
+            ProfileScreen(navController = navHostController, viewModel = examViewModel)
         }
     }
 }

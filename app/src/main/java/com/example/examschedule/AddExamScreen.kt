@@ -33,11 +33,11 @@ fun AddExamScreen(viewModel: ExamViewModel) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TextField(value = subject, onValueChange = { subject = it }, label = { Text("Subject") })
-        TextField(value = date, onValueChange = { date = it }, label = { Text("Date") })
-        TextField(value = startTime, onValueChange = { startTime = it }, label = { Text("Start Time") })
-        TextField(value = duration, onValueChange = { duration = it }, label = { Text("Duration") })
-        TextField(value = examiner, onValueChange = { examiner = it }, label = { Text("Examiner") })
+        TextField(value = subject, onValueChange = { subject = it }, label = { Text("Предмет") })
+        TextField(value = date, onValueChange = { date = it }, label = { Text("Дата") })
+        TextField(value = startTime, onValueChange = { startTime = it }, label = { Text("Время начала") })
+        TextField(value = duration, onValueChange = { duration = it }, label = { Text("Проведение") })
+        TextField(value = examiner, onValueChange = { examiner = it }, label = { Text("Экзаменатор") })
         Button(onClick = {
             if (subject.isNotEmpty() && date.isNotEmpty() && startTime.isNotEmpty() && duration.isNotEmpty() && examiner.isNotEmpty()) {
                 viewModel.insertExam(
@@ -51,7 +51,7 @@ fun AddExamScreen(viewModel: ExamViewModel) {
                 )
             }
         }) {
-            Text("Add Exam")
+            Text("Добавить экзамен")
         }
     }
 }
