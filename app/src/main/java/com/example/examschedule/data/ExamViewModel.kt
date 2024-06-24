@@ -31,4 +31,14 @@ class ExamViewModel(application: Application) : AndroidViewModel(application) {
             examDao.deleteExam(exam)
         }
     }
+
+    fun deleteAllExams() {
+        viewModelScope.launch(Dispatchers.IO) {
+            examDao.deleteAllExams()
+        }
+
+    }
+
+
 }
+

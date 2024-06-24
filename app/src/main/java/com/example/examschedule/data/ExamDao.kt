@@ -17,4 +17,7 @@ interface ExamDao {
 
     @Delete
     suspend fun deleteExam(exam: Exam)
+
+    @Query("DELETE FROM exams")
+    suspend fun  deleteAllExams()
 }

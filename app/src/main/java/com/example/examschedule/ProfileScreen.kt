@@ -13,7 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.examschedule.data.Exam
 import com.example.examschedule.data.ExamViewModel
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun ProfileScreen(navController: NavController, viewModel: ExamViewModel) {
@@ -28,9 +30,9 @@ fun ProfileScreen(navController: NavController, viewModel: ExamViewModel) {
     ) {
         user?.let {
             Text(text = "Полное имя: ${it.fullName}")
-            Text(text = "Позиция: ${it.position}")
         }
         Button(onClick = {
+        viewModel.deleteAllExams()
             navController.navigate("screen_1") {
                 popUpTo(navController.graph.startDestinationId) {
                     inclusive = true

@@ -26,7 +26,10 @@ fun ScheduleScreen(viewModel: ExamViewModel) {
                     .padding(8.dp)
                     .fillMaxWidth()
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(
+                    modifier = Modifier
+                        .padding(16.dp)
+                ) {
                     Text(text = "Предмет: ${exam.subject}")
                     Text(text = "Дата: ${exam.date}")
                     Text(text = "Начало проведения: ${exam.startTime}")
